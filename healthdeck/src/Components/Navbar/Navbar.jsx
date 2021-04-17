@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import "react-pro-sidebar/dist/css/styles.css";
 import "./Navbar.css";
 
 const Navbar = () => {
