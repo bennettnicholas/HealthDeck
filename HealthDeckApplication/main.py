@@ -1,6 +1,9 @@
 # importing pygame
 import pygame
-  
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 pygame.init()
   
 # setting window size
