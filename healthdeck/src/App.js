@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 
-import logo from './logo.svg';
 import './App.css';
 
-import  Navbar  from "./Components/Navbar/Navbar.jsx";
+import {Navbar} from "./Components/Navbar/Navbar";
 
 function App() {
   return (
