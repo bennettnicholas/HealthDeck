@@ -2,9 +2,14 @@
 import pygame
 import sys
 import json
+import requests
 
 from pymongo import MongoClient
 client = MongoClient("mongodb+srv://hackathon:hockeymanhockeyman@cluster0.mwfxm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
+url = 'https://us-central1-aiot-fit-xlab.cloudfunctions.net/healthdecklastreading'
+
+
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -49,10 +54,31 @@ smallfont = pygame.font.SysFont('Corbel',35)
 # this font
 text = smallfont.render('quit' , True , black)
 
+#for quit
 font = pygame.font.Font('freesansbold.ttf', 32)
 textRect = text.get_rect()
-textRect.center = (width // 2 + 75, height // 4 + 75)
+textRect.center = (75, 75)
 
+currentBG = font.render('Current Blood Sugar' , True , white)
+currentPulse = font.render('Current Pulse' , True , white)
+currentOxy = font.render('Current Blood Oxygen Levels' , True , white)
+currentTemp = font.render('Current Body Temperature' , True , white)
+
+currentBGRect = currentBG.get_rect()
+currentBGRect.center = (width // 4 + 75, height //4 -20)
+screen.blit(currentBG, currentBGRect)
+
+currentPulseRect = currentPulse.get_rect()
+currentPulseRect.center = (width // 2 + 75, height //4 - 20)
+screen.blit(currentPulse, currentPulseRect)
+
+currentOxyRect = currentOxy.get_rect()
+currentOxyRect.center = (width // 2 + 75, height //2 - 20)
+screen.blit(currentOxy, currentOxyRect)
+
+currentTempRect = currentTemp.get_rect()
+currentTempRect.center = (width // 4 + 75, height //2- 20)
+screen.blit(currentTemp, currentTempRect)
 
 
 
@@ -68,11 +94,38 @@ while True:
               
             #if the mouse is clicked on the
             # button the game is terminated
-            if width/2 <= mouse[0] <= width/2+150 and height/4 <= mouse[1] <= height/4+150:
+            if 0 <= mouse[0] <= 150 and 0 <= mouse[1] <= 150:
                 pygame.quit()
                 
-    pygame.draw.rect(screen,color_dark,[width/2,height/4,150,150])
+    pygame.draw.rect(screen,color_dark,[0,0,150,150])
 
+    #Grabbing Other Stats
+    response = requests.post(url, data={})
+    jsonResponse = json.loads(response.text)
+    pulse = jsonResponse['pulse']
+    oxygen = jsonResponse['oxygen']
+    temperature = jsonResponse['temperature']
+
+    text_pulse = font.render(str(pulse), True, black, blue)
+    pygame.draw.rect(screen,white,[width/2,height/4,150,150])
+    text_oxy = font.render(str(oxygen), True, black, blue)
+    pygame.draw.rect(screen,white,[width/2,height/2,150,150])
+    text_temp = font.render(str(temperature), True, black, blue)
+    pygame.draw.rect(screen,white,[width/4,height/2,150,150])
+
+    PulseRect = text_pulse.get_rect()
+    PulseRect.center = (width // 2 + 75, height //4 + 75)
+    screen.blit(text_pulse, PulseRect)
+
+    OxyRect = text_oxy.get_rect()
+    OxyRect.center = (width // 2 + 75, height //2 + 75)
+    screen.blit(text_oxy, OxyRect)
+
+    TempRect = text_temp.get_rect()
+    TempRect.center = (width // 4 + 75, height //2 + 75)
+    screen.blit(text_temp, TempRect)
+
+    #Grabbing Blood Sugare
     x = col.find({}, {"_id": 0, "sgv": 1}).sort([('dateString', -1)])
     arrayDoc = list(x)
     if arrayDoc is None:
@@ -91,9 +144,11 @@ while True:
 
     textRect2 = text2.get_rect()
     textRect2.center = (width // 4 + 75, height //4 + 75)
+    screen.blit(text2, textRect2)
+
     # superimposing the text onto our button
     screen.blit(text , textRect)
-    screen.blit(text2, textRect2)
+    
     # updates the frames of the game
     pygame.display.update()
 
