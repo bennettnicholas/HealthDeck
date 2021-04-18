@@ -33,43 +33,47 @@ const Profile = () => {
         <div className="col-6 info" style={{ fontSize: "2px",marginLeft:"10%"}}>
           <h5>
             <span>Name:</span>
-            {}
+            
           </h5>
+          <h6>Alex</h6>
           <h5>
             <span>Email:</span>
             {}
           </h5>
+          <h6>alex4326@gmail.com</h6>
           <h5>
             <span>Phone Number:</span>
             {}
           </h5>
+          <h6>256-997-8920</h6>
         </div>
 
         <div className="row">
           <div
             className="col-6 noti-prefernce"
             style={{
-              marginLeft: "20%",
-              background: "grey",
-              width: "450px",
-              height: "500px",
+              marginLeft: "10%",
+              
              
             }}
           >
-            <h4>Notification Prefrences</h4>
+            <h4 style={{fontWeight:"bold",textDecoration:"underline"}}>Notification Prefrences</h4>
             <p>{}</p>
           </div>
           <div
             className="col-6 emergencyconatct"
             style={{
-              marginLeft: "20%",
-              background: "grey",
-              width: "450px",
-              height: "500px",
+              marginLeft: "10%",
+              
             }}
           >
-            <h4>Your Emergency Contact</h4>
-            <p>{}</p>
+            <h4 style={{fontWeight:"bold",textDecoration:"underline"}}>Your Emergency Contact</h4>
+            <p >Mom
+              <br></br>
+               - Phone Number: 256-267-9900
+               
+            </p>
+            
           </div>
         </div>
       </div>
