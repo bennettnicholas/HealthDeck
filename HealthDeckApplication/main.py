@@ -89,11 +89,11 @@ currentPulseRect.center = (2* width //3 + 40, height //9 - 20)
 screen.blit(currentPulse, currentPulseRect)
 
 currentOxyRect = currentOxy.get_rect()
-currentOxyRect.center = (2* width // 3 + 40, 8 * height //9 - 20)
+currentOxyRect.center = (2* width // 3 + 40, 6 * height //9 - 20)
 screen.blit(currentOxy, currentOxyRect)
 
 currentTempRect = currentTemp.get_rect()
-currentTempRect.center = (width // 3 + 40, 8* height //9- 20)
+currentTempRect.center = (width // 3 + 40, 6* height //9- 20)
 screen.blit(currentTemp, currentTempRect)
 
 
@@ -127,20 +127,20 @@ while True:
     text_pulse = font.render(str(pulse), True, black)
     pygame.draw.rect(screen,white,[2*width/3,height/9,80,80])
     text_oxy = font.render(str(oxygen), True, black)
-    pygame.draw.rect(screen,white,[2*width/3,8*height/9,80,80])
+    pygame.draw.rect(screen,white,[2*width/3,6*height/9,80,80])
     text_temp = font.render(str(temperature), True, black)
-    pygame.draw.rect(screen,white,[width/3,8*height/9,80,80])
+    pygame.draw.rect(screen,white,[width/3,6*height/9,80,80])
 
     PulseRect = text_pulse.get_rect()
     PulseRect.center = (2*width // 3 + 40, height //9 + 40)
     screen.blit(text_pulse, PulseRect)
 
     OxyRect = text_oxy.get_rect()
-    OxyRect.center = (2*width // 3 + 40, 8*height //9 + 40)
+    OxyRect.center = (2*width // 3 + 40, 6*height //9 + 40)
     screen.blit(text_oxy, OxyRect)
 
     TempRect = text_temp.get_rect()
-    TempRect.center = (width // 3 + 40, 8*height //9 + 40)
+    TempRect.center = (width // 3 + 40, 6*height //9 + 40)
     screen.blit(text_temp, TempRect)
 
     
