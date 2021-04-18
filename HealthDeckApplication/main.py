@@ -7,100 +7,70 @@ import pygame
 pygame.init()
   
 # setting window size
-win = pygame.display.set_mode((500, 400))
+screen = pygame.display.set_mode((800, 480))
   
 # setting title to the window
-pygame.display.set_caption("Bubble sort")
+pygame.display.set_caption("Health Deck")
+
+# fill the window with black color
+screen.fill((0, 0, 0))
+
+# white color
+color = (255,255,255)
   
-# initial position
-x = 40
-y = 40
+# light shade of the button
+color_light = (170,170,170)
   
-# width of each bar
-width = 20
+# dark shade of the button
+color_dark = (100,100,100)
+
+# stores the width of the
+# screen into a variable
+width = screen.get_width()
+
+# stores the height of the
+# screen into a variable
+height = screen.get_height()
+
+# defining a font
+smallfont = pygame.font.SysFont('Corbel',35)
   
-# height of each bar (data to be sorted)
-height = [200, 50, 130, 90, 250, 61, 110,
-            88, 33, 80, 70, 159, 180, 20]
-  
-run = True
-  
-# method to show the list of height
-def show(height):
-  
-    # loop to iterate each item of list
-    for i in range(len(height)):
-  
-        # drawing each bar with respective gap
-        pygame.draw.rect(win, (255, 0, 0), (x + 30 * i, y, width, height[i]))
-  
-# infinite loop
-while run:
-  
-    # execute flag to start sorting
-    execute = False
-  
-    # time delay
-    pygame.time.delay(10)
-  
-    # getting keys pressed
-    keys = pygame.key.get_pressed()
-  
-    # iterating events
-    for event in pygame.event.get():
-  
-        # if event is to quit
-        if event.type == pygame.QUIT:
-  
-            # making run = false so break the while loop
-            run = False
-  
-    # if space bar is pressed
-    if keys[pygame.K_SPACE]:
-        # make execute flag to true
-        execute = True
-  
-    # checking if execute flag is false
-    if execute == False:
-  
-        # fill the window with black color
-        win.fill((0, 0, 0))
-  
-        # call the height method to show the list items
-        show(height)
-  
-        # update the window
-        pygame.display.update()
-  
-    # if execute flag is true
+# rendering a text written in
+# this font
+text = smallfont.render('quit' , True , color)
+
+while True:
+      
+    for ev in pygame.event.get():
+          
+        if ev.type == pygame.QUIT:
+            pygame.quit()
+              
+        #checks if a mouse is clicked
+        if ev.type == pygame.MOUSEBUTTONDOWN:
+              
+            #if the mouse is clicked on the
+            # button the game is terminated
+            if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40:
+                pygame.quit()
+      
+    # stores the (x,y) coordinates into
+    # the variable as a tuple
+    mouse = pygame.mouse.get_pos()
+      
+    # if mouse is hovered on a button it
+    # changes to lighter shade 
+    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2:
+        pygame.draw.rect(screen,color_light,[width/2,height/2,140,40])
+          
     else:
-  
-        # start sorting using bubble sort technique
-        for i in range(len(height) - 1):
-  
-            # after this iteration max element will come at last
-            for j in range(len(height) - i - 1):
-  
-                # starting is greater then next element
-                if height[j] > height[j + 1]:
-  
-                    # save it in temporary variable
-                    # and swap them using temporary variable
-                    t = height[j]
-                    height[j] = height[j + 1]
-                    height[j + 1] = t
-  
-                # fill the window with black color
-                win.fill((0, 0, 0))
-  
-                # call show method to display the list items
-                show(height)
-  
-                # create a time delay
-                pygame.time.delay(50)
-  
-                # update the display
-                pygame.display.update()
-  
+        pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40])
+      
+    # superimposing the text onto our button
+    screen.blit(text , (width/2+50,height/2))
+      
+    # updates the frames of the game
+    pygame.display.update()
+
 # exiting the main window
 pygame.quit()
