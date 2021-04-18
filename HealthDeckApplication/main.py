@@ -2,8 +2,6 @@
 import pygame
 import sys
 import json
-from bson.objectid import ObjectId
-from bson.json_util import dumps
 
 from pymongo import MongoClient
 client = MongoClient("mongodb+srv://hackathon:hockeymanhockeyman@cluster0.mwfxm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
