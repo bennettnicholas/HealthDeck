@@ -1,0 +1,47 @@
+.navbar-container {
+  height: 100%;
+  width: 80px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5c6b73;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.nav-icons{
+  margin-top: 150px;
+  margin-left: 12px;
+ 
+
+}
+
+.Dashboard{
+  padding-top: 40px;
+
+}
+.dashboard-icon:hover{
+  color: #fafafa;
+  
+  opacity: 0.5;
+}
+.dashboard-icon{
+  margin-top: 10px;
+
+}
+.home_icon:hover{
+  color: #fafafa;
+ 
+  opacity: 0.5;
+
+}
+.profile_icon{
+  margin-top: 20px;
+
+}
+.profile_icon:hover{
+  color: #fafafa;
+ 
+  opacity: 0.5;
+}
