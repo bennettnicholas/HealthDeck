@@ -59,7 +59,7 @@ textRect.center = (width // 2 + 75, height // 4 + 75)
 while True:
       
     for ev in pygame.event.get():
-          
+        mouse = pygame.mouse.get_pos()  
         if ev.type == pygame.QUIT:
             pygame.quit()
               
@@ -70,18 +70,8 @@ while True:
             # button the game is terminated
             if width/2 <= mouse[0] <= width/2+150 and height/4 <= mouse[1] <= height/4+150:
                 pygame.quit()
-    
-    # stores the (x,y) coordinates into
-    # the variable as a tuple
-    mouse = pygame.mouse.get_pos()
-      
-    # if mouse is hovered on a button it
-    # changes to lighter shade 
-    if width/2 <= mouse[0] <= width/2+150 and height/4 <= mouse[1] <= height/4+150:
-        pygame.draw.rect(screen,red,[width/2,height/4,150,150])
-          
-    else:
-        pygame.draw.rect(screen,color_dark,[width/2,height/4,150,150])
+                
+    pygame.draw.rect(screen,color_dark,[width/2,height/4,150,150])
 
     x = col.find({}, {"_id": 0, "sgv": 1}).sort([('dateString', -1)])
     arrayDoc = list(x)
