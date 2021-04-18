@@ -1,4 +1,3 @@
-
 import React, { Component, useContext, useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -17,10 +16,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch("https://us-central1-aiot-fit-xlab.cloudfunctions.net/healthdecklastreading", 
+    fetch("http://45.79.199.42:8002/getsinglereading",
     {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'GET',
+      //mode: 'no-cors',
       cache: 'no-cache',
     })
       .then(res => res.json())
@@ -45,60 +44,6 @@ class Home extends Component {
       )
   }
 
-  /*
-
-  const[data, setData]= useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-    fetch(
-      'https://us-central1-aiot-fit-xlab.cloudfunctions.net/healthdecklastreading', 
-      {
-        method: 'POST',
-        mode: 'no-cors',
-        cache: 'no-cache',
-        headers: {
-            "Content-Type": "application/json",
-        }
-      }
-    )
-    .then(response  => response.json())
-    .then(result => {
-        if(mounted) {
-          setData(result);
-        }  
-      },
-      (error) => {
-        console.log(error);
-      })
-    return () => mounted = false;
-  }, [])
-
-  */
-  // const dataUrl =
-  //   "https://us-central1-aiot-fit-xlab.cloudfunctions.net/healthdecklastreading";
-  //   fetch(dataUrl)
-  //     .then((response) => response.json())
-  //     .then((data) => console.log('This is your data', data));
-
-  // const [data, setdata] = useState({});
-
-  // useEffect(() => {
-  //   getdatawithAxios();
-   
-  // }, []);
-
-  // const getdatawithAxios = async () => {
-  //   const response = await axios.get(dataUrl);
-  //   setdata(response.data);
-    
-  // };
-
-  // const heart_data = 100;
-  // const sugar_data = 10;
-  // const oxygen_data = 100;
-  // const temp_data = 100;
-
   render() {
     return(
       <>
@@ -107,38 +52,38 @@ class Home extends Component {
           <div className="row top_two">
             <div className="col-6 heart_container">
               <h6 style={{color:"#CECACA",fontWeight:600}}> Heart Rate</h6>
-              <div className="heart_rate"style={{background: this.state.pulse >= 90 ? "green" : "blue"
-}}>
-                  <Link to="/Analytics">
-                  <p>{this.state.pulse}</p>
-                  </Link>
+              <div className="heart_rate"style={{background:'white',outline:"5px solid black" }}>
+
+                
+                  <h1 style={{textAlign:'center',justifyContent:'center', fontSize:'200px'}}>89</h1>
+                 
               </div>
             </div>
-            <div className="sugar_container">
+            <div className="sugar_container" >
               <h6 style={{color:"#CECACA",fontWeight:600}}> Blood Sugar</h6>
-              <div className="Blood_sugar">
-              <Link to="/Analytics">
-                <p>TODO</p>
-                </Link>
+              <div className="Blood_sugar" style={{background:'lightGreen',outline:"5px solid black" }}>
+              
+              <h1 style={{textAlign:'center',justifyContent:'center', fontSize:'200px'}}>138</h1>
+                
               </div>
             </div>
           </div>
           <div className="row bottom_two">
 
-          <div className="col-6 oxygen_container">
+          <div className="col-6 oxygen_container" >
             <h6 style={{color:"#CECACA",fontWeight:600}}> Blood Oxygen</h6>
-            <div className="Blood_oxygen">
-            <Link to="/Analytics">
-              <p>{this.state.oxygen}</p>
-              </Link>
+            <div className="Blood_oxygen" style={{background:'white',outline:"5px solid black" }}>
+            
+            <h1 style={{textAlign:'center',justifyContent:'center', fontSize:'200px'}}>99</h1>
+              
             </div>
           </div>
           <div className="temp_container">
             <h6 style={{color:"#CECACA",fontWeight:600}}> Body Tempature</h6>
-            <div className="Body_temp">
-            <Link to="/Analytics">
-              <p>{this.state.temperature}</p>
-              </Link>
+            <div className="Body_temp" style={{background:'white',outline:"5px solid black" }}>
+           
+            <h1 style={{textAlign:'center',justifyContent:'center', fontSize:'200px'}}>98</h1>
+              
             </div>
           </div>
           </div>
