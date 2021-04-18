@@ -156,12 +156,12 @@ while True:
         if 80 <= arrayDoc[0]['sgv'] <= 160:
             if sendMessage == 0:
                 sendMessage = 1
-                message = clientSMS.messages.create(
-                     body="ATTN: Our user has select your number as their emergency contact. The user is having a low blood sugar",
-                     from_='+17133389155',
-                     to='+19524521574'
-                )
-                print('SENT MESSAGE')
+                #message = clientSMS.messages.create(
+                #     body="ATTN: Our user has select your number as their emergency contact. The user is having a low blood sugar",
+                #     from_='+17133389155',
+                #     to='+19524521574'
+                #)
+                #print('SENT MESSAGE')
             indicatorColor = green
         if 151 <= arrayDoc[0]['sgv'] <= 299 :
             indicatorColor = yellow
