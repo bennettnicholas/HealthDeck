@@ -10,14 +10,14 @@ const Navbar = () => {
           <div className="home_icon">
             <Link to="/" className="home">
               <svg
-                width="51"
+                width="53"
                 height="88"
                 viewBox="0 0 87 88"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g filter="url(#filter0_d)">
-                  <rect x="4" width="79" height="80" rx="10" fill="#FAE6B1" />
+                  <rect x="4" width="79" height="80" rx="10" fill="#ECF4FF" />
                   <path
                     d="M28.125 54.0455V34.5455L43.5 21.25L58.875 34.5455V54.0455H28.125Z"
                     stroke="#050733"
