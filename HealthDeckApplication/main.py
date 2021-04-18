@@ -57,12 +57,12 @@ text = smallfont.render('quit' , True , black)
 #for quit
 font = pygame.font.Font('freesansbold.ttf', 32)
 textRect = text.get_rect()
-textRect.center = (75, 75)
+textRect.center = (40, 40)
 
-currentBG = font.render('Current Blood Sugar' , True , white)
-currentPulse = font.render('Current Pulse' , True , white)
-currentOxy = font.render('Current Blood Oxygen Levels' , True , white)
-currentTemp = font.render('Current Body Temperature' , True , white)
+currentBG = smallfont.render('Current Blood Sugar' , True , white)
+currentPulse = smallfont.render('Current Pulse' , True , white)
+currentOxy = smallfont.render('Current Blood Oxygen Levels' , True , white)
+currentTemp = smallfont.render('Current Body Temperature' , True , white)
 
 currentBGRect = currentBG.get_rect()
 currentBGRect.center = (width // 4 + 75, height //4 -20)
@@ -94,10 +94,10 @@ while True:
               
             #if the mouse is clicked on the
             # button the game is terminated
-            if 0 <= mouse[0] <= 150 and 0 <= mouse[1] <= 150:
+            if 0 <= mouse[0] <= 80 and 0 <= mouse[1] <= 80:
                 pygame.quit()
                 
-    pygame.draw.rect(screen,color_dark,[0,0,150,150])
+    pygame.draw.rect(screen,color_dark,[0,0,80,80])
 
     #Grabbing Other Stats
     response = requests.post(url, data={})
@@ -107,22 +107,22 @@ while True:
     temperature = jsonResponse['temperature']
 
     text_pulse = font.render(str(pulse), True, black, blue)
-    pygame.draw.rect(screen,white,[width/2,height/4,150,150])
+    pygame.draw.rect(screen,white,[width/2,height/4,80,80])
     text_oxy = font.render(str(oxygen), True, black, blue)
-    pygame.draw.rect(screen,white,[width/2,height/2,150,150])
+    pygame.draw.rect(screen,white,[width/2,height/2,80,80])
     text_temp = font.render(str(temperature), True, black, blue)
-    pygame.draw.rect(screen,white,[width/4,height/2,150,150])
+    pygame.draw.rect(screen,white,[width/4,height/2,80,80])
 
     PulseRect = text_pulse.get_rect()
-    PulseRect.center = (width // 2 + 75, height //4 + 75)
+    PulseRect.center = (width // 2 + 40, height //4 + 40)
     screen.blit(text_pulse, PulseRect)
 
     OxyRect = text_oxy.get_rect()
-    OxyRect.center = (width // 2 + 75, height //2 + 75)
+    OxyRect.center = (width // 2 + 40, height //2 + 40)
     screen.blit(text_oxy, OxyRect)
 
     TempRect = text_temp.get_rect()
-    TempRect.center = (width // 4 + 75, height //2 + 75)
+    TempRect.center = (width // 4 + 40, height //2 + 40)
     screen.blit(text_temp, TempRect)
 
     #Grabbing Blood Sugare
@@ -140,10 +140,10 @@ while True:
         if 80 >= arrayDoc[0]['sgv'] <= 300:
             indicatorColor = red
     text2 = font.render(str(boomer), True, black, indicatorColor)
-    pygame.draw.rect(screen,white,[width/4,height/4,150,150])
+    pygame.draw.rect(screen,white,[width/4,height/4,80,80])
 
     textRect2 = text2.get_rect()
-    textRect2.center = (width // 4 + 75, height //4 + 75)
+    textRect2.center = (width // 4 + 40, height //4 + 40)
     screen.blit(text2, textRect2)
 
     # superimposing the text onto our button
