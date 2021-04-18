@@ -7,7 +7,7 @@ import pygame
 pygame.init()
   
 # setting window size
-screen = pygame.display.set_mode((800, 480))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
   
 # setting title to the window
 pygame.display.set_caption("Health Deck")
