@@ -6,12 +6,12 @@ from twilio.rest import Client
 import requests
 
 from pymongo import MongoClient
-client = MongoClient("mongodb+srv://hackathon:hockeymanhockeyman@cluster0.mwfxm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://hackathon:<password>@cluster0.mwfxm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
 url = 'https://us-central1-aiot-fit-xlab.cloudfunctions.net/healthdecklastreading'
 
-account_sid = 'ACb06771b5806b577fb291a49b65da417c'
-auth_token = 'a38fa335dd14a32873dae977c39a08c8'
+account_sid = 'ACCOUNT_SID'
+auth_token = 'AUTH_TOKEN'
 clientSMS = Client(account_sid, auth_token)
 sendMessage = 0
 
